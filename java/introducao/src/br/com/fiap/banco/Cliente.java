@@ -7,6 +7,22 @@ public class Cliente {
 	private String sexo;
 	private Long idade;
 	private String cpf;
+	private Endereco endereco;
+
+	public Cliente(Long idCliente, String nomeCliente, String sexo, Long idade, String cpf, Endereco endereco) {
+		// atributos da classe mãe (por padrão recebe o Object)
+		super();
+		this.idCliente = idCliente;
+		this.nomeCliente = nomeCliente;
+		this.sexo = sexo;
+		this.idade = idade;
+		this.cpf = cpf;
+		this.endereco = endereco;
+	}
+
+	public Cliente() {
+
+	}
 
 	public Long getIdCliente() {
 		return idCliente;
@@ -46,6 +62,14 @@ public class Cliente {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	@Override

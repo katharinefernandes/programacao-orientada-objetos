@@ -5,25 +5,36 @@ public class Conta {
 	// static para quando não quero instanciar um objeto
 
 	// nível mais restritivo (só visto dentro da própria classe)
-	private String numAgencia;
+	private Agencia agencia;
 	private String numConta;
 	private double saldo;
 	// BigDecimal para cálculos financeiros (arredondamento mais bem definido)
 	private Cliente cliente;
+	
+	public Conta() {
+		
+	}
+	
+	public Conta(Agencia agencia, String numConta, double saldo, Cliente cliente) {
+		super();
+		this.agencia = agencia;
+		this.numConta = numConta;
+		this.saldo = saldo;
+		this.cliente = cliente;
+	}
 
 	// encapsulamento para acessar os atributos, para implementar o JavaBean é
 	// necessário criar os getters e setters
-
-	public String getNumAgencia() {
-		return numAgencia;
-	}
-
-	public void setNumAgencia(String numAgencia) {
-		this.numAgencia = numAgencia;
-	}
-
 	public String getNumConta() {
 		return numConta;
+	}
+
+	public Agencia getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(Agencia agencia) {
+		this.agencia = agencia;
 	}
 
 	public void setNumConta(String numConta) {
@@ -58,7 +69,9 @@ public class Conta {
 
 	public boolean transferencia(String numConta, String numAgencia, double valor) {
 
-		if (!this.numConta.equals(numConta) || !this.numAgencia.equals(numAgencia)) {
+		Agencia agencia = this.agencia;
+
+		if (!agencia.getNumAgencia().equals(numConta) || !agencia.equals(numAgencia)) {
 			if (this.saldo >= valor) {
 				this.saldo -= valor;
 				return true;
@@ -67,6 +80,12 @@ public class Conta {
 
 		return false;
 
+	}
+
+	@Override
+	public String toString() {
+		return "Conta [agencia=" + agencia + ", numConta=" + numConta + ", saldo=" + saldo + ", cliente=" + cliente
+				+ "]";
 	}
 
 }
