@@ -1,4 +1,4 @@
-package br.com.fiap.repositorio;
+package repositorio.generico;
 
 import java.util.ArrayList;
 import java.util.List;

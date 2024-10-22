@@ -1,4 +1,4 @@
-package br.com.fiap.repositorio;
+package repositorio.generico;
 
 public class Teste {
 	public static void main(String[] args) {

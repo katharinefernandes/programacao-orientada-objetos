@@ -1,18 +1,9 @@
-package repositorio.generico;
+package repositorio.produtos;
 
 public class Produto {
 
-	private int id;
 	private String nome;
 	private double preco;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;
@@ -32,7 +23,6 @@ public class Produto {
 
 	@Override
 	public String toString() {
-		return "Produto [id=" + id + ", nome=" + nome + ", preco=" + preco + "]";
+		return "Produto [nome=" + nome + ", preco=" + preco + "]";
 	}
-
 }

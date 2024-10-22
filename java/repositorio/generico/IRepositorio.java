@@ -1,4 +1,4 @@
-package br.com.fiap.repositorio;
+package repositorio.generico;
 
 import java.util.List;
 
