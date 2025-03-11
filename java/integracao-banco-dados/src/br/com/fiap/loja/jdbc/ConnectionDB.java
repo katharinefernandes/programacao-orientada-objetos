@@ -1,4 +1,4 @@
-package jdbc;
+package br.com.fiap.loja.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
