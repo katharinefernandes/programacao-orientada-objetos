@@ -92,11 +92,7 @@ public class Categoria {
 
 		try {
 			stmt = con.prepareStatement(sql);
-			ResultSet result = stmt.executeQuery(sql);
-
-			if (!result.next()) {
-				System.out.println("Não há linhas para exibir");
-			}
+			ResultSet result = stmt.executeQuery();
 
 			System.out.println("--- CATEGORIAS ---");
 			while (result.next()) {
@@ -104,6 +100,10 @@ public class Categoria {
 				c.idCategoria = result.getInt("IDCATEGORIA");
 				c.descricao = result.getString("DESCRICAO");
 				listCategorias.add(c);
+			}
+
+			if (listCategorias.isEmpty()) {
+				System.out.println("Não há linhas para exibir");
 			}
 
 		} catch (Exception e) {

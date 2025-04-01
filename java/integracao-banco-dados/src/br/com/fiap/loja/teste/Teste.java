@@ -15,11 +15,13 @@ public class Teste {
 		System.out.println("1 - Incluir novo cliente.");
 		System.out.println("2 - Alterar um cliente.");
 		System.out.println("3 - Excluir um cliente.");
-		System.out.println("4 - Pesquisar cliente.");
-		System.out.println("5 - Incluir uma categoria.");
-		System.out.println("6 - Alterar uma categoria.");
-		System.out.println("7 - Exluir uma categoria.");
-		System.out.println("8 - Pesquisar uma categoria.");
+		System.out.println("4 - Pesquisar um cliente por id.");
+		System.out.println("5 - Pesquisar clientes.");
+		System.out.println("6 - Pesquisar clientes por nome.");
+		System.out.println("7 - Incluir uma categoria.");
+		System.out.println("8 - Alterar uma categoria.");
+		System.out.println("9 - Exluir uma categoria.");
+		System.out.println("10 - Pesquisar uma categoria.");
 		System.out.println("0 - Sair.");
 		System.out.println("-----------------------");
 		System.out.println("");
@@ -43,27 +45,35 @@ public class Teste {
 				break;
 			}
 			case 4: {
-				System.out.println("Pesquisar Cliente....");
+				pesquisarCliente();
 				break;
 			}
 			case 5: {
-				adicionarCategoria();
+				pesquisarClientes();
 				break;
 			}
 			case 6: {
-				atualizarCategoria();
+				pesquisarClientesPorNome();
 				break;
 			}
 			case 7: {
-				removerCategoria();
+				adicionarCategoria();
 				break;
 			}
 			case 8: {
+				atualizarCategoria();
+				break;
+			}
+			case 9: {
+				removerCategoria();
+				break;
+			}
+			case 10: {
 				pesquisarCategorias();
 				break;
 			}
 			default:
-				System.out.print("Informe uma opcao valida (0, 1, 2 ou 3): ");
+				System.out.print("Informe uma opcao valida (0 a 10): ");
 				opcao = sc.nextInt();
 			}
 
@@ -74,7 +84,6 @@ public class Teste {
 		System.out.println("Saindo...");
 
 	}
-
 
 	private static void adicionaCliente() {
 		Cliente c1 = new Cliente();
@@ -109,7 +118,36 @@ public class Teste {
 		c1.setIdCliente(sc.nextLong());
 		c1.excluiCliente();
 	}
-	
+
+	private static void pesquisarCliente() {
+		Cliente c1 = new Cliente();
+
+		System.out.print("Informe o id do cliente: ");
+		c1.setIdCliente(sc.nextLong());
+
+		System.out.println(c1.pesquisarCliente());
+	}
+
+	private static void pesquisarClientes() {
+		Cliente c1 = new Cliente();
+
+		for (Cliente cliente : c1.pesquisarClientes()) {
+			System.out.println(cliente);
+		}
+
+	}
+
+	private static void pesquisarClientesPorNome() {
+		Cliente c1 = new Cliente();
+
+		System.out.print("Informe o nome do cliente: ");
+
+		for (Cliente cliente : c1.pesquisarClienteByName(sc.next())) {
+			System.out.println(cliente);
+		}
+
+	}
+
 	private static void adicionarCategoria() {
 		Categoria cat = new Categoria();
 		System.out.print("Informe o id da categoria: ");
@@ -117,10 +155,10 @@ public class Teste {
 		sc.nextLine();
 		System.out.print("Informe a descricao da categoria: ");
 		cat.setDescricao(sc.nextLine());
-		
+
 		cat.inserirCategoria();
 	}
-	
+
 	private static void atualizarCategoria() {
 		Categoria cat = new Categoria();
 		System.out.print("Informe o id da categoria: ");
@@ -128,27 +166,25 @@ public class Teste {
 		sc.nextLine();
 		System.out.print("Informe a descricao da categoria: ");
 		cat.setDescricao(sc.nextLine());
-		
+
 		cat.alterarCategoria();
 	}
-	
+
 	private static void removerCategoria() {
 		Categoria cat = new Categoria();
 		System.out.print("Informe o id da categoria: ");
 		cat.setIdCategoria(sc.nextInt());
-		
+
 		cat.excluirCategoria();
 	}
-	
+
 	private static void pesquisarCategorias() {
 		Categoria cat = new Categoria();
 		System.out.println("Categorias Cadastradas");
 		for (Categoria categoria : cat.pesquisarCategorias()) {
 			System.out.println(categoria);
 		}
-		
+
 	}
-	
-	
 
 }
