@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import br.com.fiap.loja.model.Categoria;
 import br.com.fiap.loja.model.Cliente;
+import br.com.fiap.loja.model.Produto;
 
 public class Teste {
 
@@ -12,6 +13,7 @@ public class Teste {
 	public static void main(String[] args) {
 
 		System.out.println("---------- MENU -----------");
+		System.out.println("-------------- CLIENTE --------------");
 		System.out.println("1 - Incluir novo cliente.");
 		System.out.println("2 - Alterar um cliente.");
 		System.out.println("3 - Excluir um cliente.");
@@ -22,6 +24,8 @@ public class Teste {
 		System.out.println("8 - Alterar uma categoria.");
 		System.out.println("9 - Exluir uma categoria.");
 		System.out.println("10 - Pesquisar uma categoria.");
+		System.out.println("-------------- PRODUTO --------------");
+		System.out.println("11 - Incluir novo produto.");
 		System.out.println("0 - Sair.");
 		System.out.println("-----------------------");
 		System.out.println("");
@@ -70,6 +74,10 @@ public class Teste {
 			}
 			case 10: {
 				pesquisarCategorias();
+				break;
+			}
+			case 11: {
+				adicionarProduto();
 				break;
 			}
 			default:
@@ -185,6 +193,39 @@ public class Teste {
 			System.out.println(categoria);
 		}
 
+	}
+	
+	private static Categoria pesquisarCategoria(Integer idCategoria) {
+		Categoria cat = new Categoria();
+		cat.setIdCategoria(idCategoria);
+		
+		return cat.pesquisarCategoria();
+	}
+	
+	private static void adicionarProduto() {
+		Produto p1 = new Produto();
+		System.out.println("--- INSERINDO UM PRODUTO ---");
+		System.out.print("Informe o id: ");
+		p1.setIdProduto(sc.nextInt());
+		sc.nextLine();
+		System.out.print("Informe a descricao: ");
+		p1.setDescricao(sc.nextLine());
+		System.out.print("Informe o preco do produto: ");
+		p1.setPreco(sc.nextDouble());
+		
+		System.out.println("CATEGORIAS DISPONÍVEIS");
+		pesquisarCategorias();
+		System.out.print("Informe o id da categoria: ");
+		Integer idCategoria = sc.nextInt();
+		Categoria cat = pesquisarCategoria(idCategoria);
+		if (cat == null) {
+			System.out.println("A categoria informada nao existe!");
+			return;
+		}
+		p1.setCategoria(cat);
+		
+		
+		p1.inserirProduto();
 	}
 
 }

@@ -113,6 +113,35 @@ public class Categoria {
 
 	}
 
+	public Categoria pesquisarCategoria() {
+		Connection con = ConnectionDB.obterConexao();
+		PreparedStatement stmt;
+
+		String sql = "SELECT * FROM CATEGORIA WHERE IDCATEGORIA=? ";
+
+		Categoria categoria = new Categoria();
+
+		try {
+			stmt = con.prepareStatement(sql);
+			stmt.setInt(1, this.idCategoria);
+			ResultSet result = stmt.executeQuery();
+
+			if (!result.next()) {
+				return null;
+			}
+
+			Categoria c = new Categoria();
+			c.idCategoria = result.getInt("IDCATEGORIA");
+			c.descricao = result.getString("DESCRICAO");
+			categoria = c;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return categoria;
+
+	}
+
 	@Override
 	public String toString() {
 		return "Categoria [idCategoria=" + idCategoria + ", descricao=" + descricao + "]";
